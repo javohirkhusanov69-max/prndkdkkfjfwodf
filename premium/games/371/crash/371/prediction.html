@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+
+<html lang="ar">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>BYTROX SCRIPT</title>
+
+  <style>
+
+    @font-face {
+
+      font-family: "CustomBold";
+
+      src: url("bold.ttf") format("truetype");
+
+      font-weight: 900;
+
+    }
+
+    body, html {
+
+      height: 100%;
+
+      margin: 0;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      font-family: "CustomBold", Arial, sans-serif;
+
+      background: #fff;
+
+      color: #000;
+
+    }
+
+    .top-bar-bg {
+
+      width: 100%;
+
+      height: 75px;
+
+      background: red;
+
+      box-shadow: 0 0 10px #FF3B3B, 0 0 20px #FF3B3B;
+
+      position: fixed;
+
+      top: 0;
+
+      left: 0;
+
+      z-index: 1;
+
+    }
+
+    .bottom-bar-bg {
+
+      width: 100%;
+
+      height: 75px;
+
+      background: white;
+
+      box-shadow: 0 -0.1px 5px grey;
+
+      position: fixed;
+
+      bottom: 0;
+
+      left: 0;
+
+      z-index: 1;
+
+    }
+
+    .top-bar {
+
+      width: 100%;
+
+      height: 75px;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      font-size: 2em;
+
+      color: white;
+
+      position: fixed;
+
+      top: 0;
+
+      left: 0;
+
+      z-index: 2;
+
+    }
+
+    .bottom-bar {
+
+      width: 100%;
+
+      height: 75px;
+
+      position: fixed;
+
+      bottom: 0;
+
+      left: 0;
+
+      z-index: 2;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+    }
+
+    #time {
+
+      font-size: 1.4em;
+
+      position: absolute;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      color: black;
+
+    }
+
+    #menuIcon {
+
+      position: absolute;
+
+      left: 25px;
+
+    }
+
+    #tgImg {
+
+      position: absolute;
+
+      right: 29px;
+
+    }
+
+    .circle-icon {
+
+      width: 40px;
+
+      height: 40px;
+
+      border-radius: 50%;
+
+      cursor: pointer;
+
+      object-fit: cover;
+
+    }
+
+    .avi-img {
+
+      width: 200px;
+
+      height: auto;
+
+      margin-top: 10px;
+
+      margin-bottom: 390px;
+
+      position: relative;
+
+      z-index: 2;
+
+    }
+
+    .orbit-container {
+
+      position: relative;
+
+      width: 200px;
+
+      height: 200px;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      margin-top: 300px;
+
+    }
+
+    #crashValue {
+
+      position: absolute;
+
+      font-size: 1.8em;
+
+      color: red;
+
+      text-align: center;
+
+    }
+
+    canvas {
+
+      position: absolute;
+
+      width: 100%;
+
+      height: 100%;
+
+    }
+
+    #signalStatus {
+
+      position: absolute;
+
+      bottom: 200px;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      background: red;
+
+      box-shadow: 0 0 10px #FF3B3B, 0 0 20px #FF3B3B;
+
+      color: white;
+
+      font-size: 22px;
+
+      padding: 15px 20px;
+
+      min-width: 120px;
+
+      border-radius: 10px;
+
+      text-align: center;
+
+      z-index: 9999;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+    }
+
+    #animatedText,
+
+    #time,
+
+    #crashValue,
+
+    #signalStatus,
+
+    button,
+
+    span,
+
+    div {
+
+      font-family: "CustomBold", Arial, sans-serif;
+
+      font-weight: 900;
+
+    }
+
+  </style>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+</head>
+
+<body>
+
+  <div class="top-bar-bg"></div>
+
+  <div class="bottom-bar-bg"></div>
+
+  <div class="top-bar">
+
+    <span id="animatedText">ʙʏᴛʀᴏx ᴘʀᴇᴅɪᴄᴛᴏʀ ⚡</span>
+
+  </div>
+
+  <div id="signalStatus">SIGNAL OFF</div>
+
+  <div class="orbit-container">
+
+    <img src="https://i.ibb.co/nKcdrws/Picsart-25-09-29-21-49-18-512.png" class="avi-img">
+
+    <canvas id="orbitCanvas"></canvas>
+
+    <div id="crashValue">0.00</div>
+
+  </div>
+
+  <div class="bottom-bar">
+
+    <img id="menuIcon" class="circle-icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOtoqIx6AHqolyva6GK4h7R12WOcTIwXStqrv6CQBKKA&s=10" alt="Menu">
+
+    <div id="time">00:00 AM</div>
+
+    <img id="tgImg" class="circle-icon" src="https://i.ibb.co/Q7WqGVGX/Picsart-25-09-29-21-44-26-432.jpg" alt="Telegram">
+
+  </div>
+
+  <script>
+
+    const texts = [
+
+      "ʙʏᴛʀᴏx ᴘʀᴇᴅɪᴄᴛᴏʀ ⚡",
+
+      "https://ᴛ.ᴍᴇ/ʙʏᴛʀᴏx_ɴᴏᴠᴀ",
+
+      "ᴄᴏɴᴛʀᴀᴄᴛ @ʙʏᴛʀᴏx_1"
+
+    ];
+
+    let currentIndex = 0;
+
+    const animatedText = document.getElementById("animatedText");
+
+    function showNextText() {
+
+      animatedText.style.transition = "opacity 1s";
+
+      animatedText.style.opacity = 0;
+
+      setTimeout(() => {
+
+        currentIndex = (currentIndex + 1) % texts.length;
+
+        animatedText.innerText = texts[currentIndex];
+
+        animatedText.style.opacity = 1;
+
+        setTimeout(showNextText, 2000);
+
+      }, 1000);
+
+    }
+
+    setTimeout(showNextText, 2000);
+
+    const firebaseConfig = {
+
+      apiKey: "AIzaSyB1_XCbC777hKwxlilhMeq5Hpty1dvDT1I",
+
+      authDomain: "giper-8fd92.firebaseapp.com",
+
+      databaseURL: "https://giper-8fd92-default-rtdb.firebaseio.com",
+
+      projectId: "giper-8fd92",
+
+      storageBucket: "giper-8fd92.firebasestorage.app",
+
+      messagingSenderId: "485740337398",
+
+      appId: "1:485740337398:web:ab901fd4f28219ea5834d7"
+
+    };
+
+    if (!firebase.apps.length) {
+
+      firebase.initializeApp(firebaseConfig);
+
+    }
+
+    const db = firebase.database();
+
+    const ref = db.ref('copy').limitToLast(1);
+
+    const crashElement = document.getElementById("crashValue");
+
+    const signalStatus = document.getElementById("signalStatus");
+
+    function setSignal(active) {
+
+      if (active) {
+
+        signalStatus.innerHTML = 'SIGNAL ON <img src="https://i.ibb.co/CKtzJjD0/Picsart-25-09-29-22-38-29-665-removebg-preview.png" style="width:27px;height:27px;margin-left:5px;vertical-align:middle;">';
+
+      } else {
+
+        signalStatus.innerText = "SIGNAL OFF";
+
+      }
+
+    }
+
+    ref.on('value', (snapshot) => {
+
+  if (snapshot.exists()) {
+
+    const data = snapshot.val();
+
+    const lastKey = Object.keys(data)[0];
+
+    const lastRound = data[lastKey];
+
+    const crashCoeff = lastRound.crashCoeff || "0.00";
+
+    // faqat raqam chiqadi (x yo‘q)
+
+    crashElement.innerText = parseFloat(crashCoeff).toFixed(2);
+
+    if (parseFloat(crashCoeff) < 2) {
+
+      crashElement.style.color = "red";
+
+      signalStatus.style.background = "red";
+
+      signalStatus.style.boxShadow = "0 0 10px #FF3B3B, 0 0 20px #FF3B3B";
+
+      setSignal(false);
+
+    } else {
+
+      crashElement.style.color = "red";
+
+      signalStatus.style.background = "red";
+
+      signalStatus.style.boxShadow = "0 0 10px #FF3B3B, 0 0 20px #FF3B3B";
+
+      setSignal(true);
+
+    }
+
+  } else {
+
+    crashElement.innerText = "0.00";
+
+    setSignal(false);
+
+  }
+
+});
+
+    const canvas = document.getElementById("orbitCanvas");
+
+    const ctx = canvas.getContext("2d");
+
+    let w, h;
+
+    function resize() {
+
+      w = canvas.width = canvas.offsetWidth;
+
+      h = canvas.height = canvas.offsetHeight;
+
+    }
+
+    window.addEventListener("resize", resize);
+
+    resize();
+
+    let animFrac = 0;
+
+    const strokeColor = "red";
+
+    const planeCountOuter = 3, planeCountInner = 3;
+
+    const planeImg = new Image();
+
+    planeImg.src = "https://i.postimg.cc/Mpd6FGnT/plane.png";
+
+    function drawPlane(x, y, angle, scale) {
+
+      ctx.save();
+
+      ctx.translate(x, y);
+
+      ctx.rotate(angle + Math.PI / 0.09);
+
+      ctx.scale(scale, scale);
+
+      ctx.drawImage(planeImg, -42, -23, 100, 100);
+
+      ctx.restore();
+
+    }
+
+    function drawOrbit(radius, count, cw) {
+
+      ctx.beginPath();
+
+      ctx.arc(w / 2, h / 2, radius, 0, Math.PI * 2);
+
+      ctx.stroke();
+
+      for (let i = 0; i < count; i++) {
+
+        let base = i / count;
+
+        let frac = cw ? (base + animFrac) : (base - animFrac);
+
+        frac -= Math.floor(frac);
+
+        let angle = frac * Math.PI * 2;
+
+        let x = w / 2 + Math.cos(angle) * radius;
+
+        let y = h / 2 + Math.sin(angle) * radius;
+
+        drawPlane(x, y, angle, Math.min(w, h) / 500);
+
+      }
+
+    }
+
+    function draw() {
+
+      ctx.clearRect(0, 0, w, h);
+
+      ctx.strokeStyle = strokeColor;
+
+      ctx.lineWidth = Math.max(2, Math.min(w, h) * 0.01);
+
+      ctx.setLineDash([2, 3]);
+
+      ctx.lineDashOffset = animFrac * 100;
+
+      let rOuter = Math.min(w, h) * 0.42;
+
+      let rInner = Math.min(w, h) * 0.28;
+
+      drawOrbit(rOuter, planeCountOuter, false);
+
+      drawOrbit(rInner, planeCountInner, true);
+
+      animFrac += 0.0029;
+
+      requestAnimationFrame(draw);
+
+    }
+
+    draw();
+
+    function updateTime() {
+
+      let now = new Date();
+
+      let hours = now.getHours();
+
+      let minutes = now.getMinutes();
+
+      let ampm = hours >= 12 ? "PM" : "AM";
+
+      hours = hours % 12;
+
+      hours = hours ? hours : 12;
+
+      document.getElementById("time").innerText =
+
+        String(hours).padStart(2, "0") + ":" +
+
+        String(minutes).padStart(2, "0") + " " + ampm;
+
+    }
+
+    setInterval(updateTime, 1000);
+
+    updateTime();
+
+    document.getElementById("tgImg").onclick = function() {
+
+      window.open("https://t.me/bytrox_1", "_blank");
+
+    };
+
+    document.getElementById("menuIcon").onclick = function() {
+
+      window.location.href = "https://bytroxx.zya.me/premium/games/371/crash/371/main.html";
+
+    };
+
+  </script>
+
+</body>
+
+</html>

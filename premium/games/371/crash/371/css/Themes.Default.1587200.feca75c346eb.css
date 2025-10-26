@@ -1,0 +1,81 @@
+:root {}
+
+.u-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0)
+}
+
+[dir] .u-visually-hidden {
+    padding: 0;
+    margin: -1px;
+    border: 0
+}
+
+:root {
+    --theme-primary: hsl(208, 62%, 40%);
+    --theme-on-primary: hsl(0, 0%, 100%);
+    --theme-on-primary-primary: hsl(208, 100%, 62%);
+    --theme-primary-30: hsl(208, 32%, 59%);
+    --theme-on-primary-30: hsl(0, 0%, 100%);
+    --theme-primary--20: hsl(208, 61%, 32%);
+    --theme-on-primary--20: hsl(0, 0%, 100%);
+    --theme-on-primary--20-accent: hsl(82, 57%, 43%);
+    --theme-on-primary--20-decent: hsl(204, 63%, 97%);
+    --theme-on-primary--20-primary: hsl(208, 100%, 72%);
+    --theme-primary--30: hsl(210, 57%, 31%);
+    --theme-on-primary--30-primary: hsl(208, 100%, 72%);
+    --theme-primary--40: hsl(210, 57%, 26%);
+    --theme-on-primary--40: hsl(0, 0%, 100%);
+    --theme-on-primary--40-decent: hsl(208, 32%, 59%);
+    --theme-on-primary--40-accent: hsl(82, 56%, 50%);
+    --theme-on-primary--40-primary: hsl(208, 100%, 62%);
+    --theme-primary--55: hsl(209, 56%, 20%);
+    --theme-on-primary--55-accent: hsl(82, 56%, 50%);
+    --theme-primary--60: hsl(210, 57%, 17%);
+    --theme-on-primary--60: hsl(0, 0%, 100%);
+    --theme-on-primary--60-accent: hsl(82, 56%, 50%);
+    --theme-on-primary--60-decent: hsl(209, 41%, 70%);
+    --theme-on-primary--60-primary: hsl(208, 100%, 62%);
+    --theme-secondary: hsl(82, 57%, 43%);
+    --theme-on-secondary: hsl(0, 0%, 100%);
+    --theme-secondary-20: hsl(82, 65%, 54%);
+    --theme-secondary-15: hsl(82, 56%, 50%);
+    --theme-secondary--10: hsl(82, 56%, 36%);
+    --theme-gray: hsl(209, 31%, 87%);
+    --theme-on-gray: hsl(208, 62%, 40%);
+    --theme-on-gray-accent: hsl(82, 57%, 43%);
+    --theme-gray-100: hsl(0, 0%, 100%);
+    --theme-on-gray-100: hsl(208, 62%, 40%);
+    --theme-on-gray-100-primary: hsl(208, 100%, 86%);
+    --theme-on-gray-100-decent: hsl(208, 32%, 59%);
+    --theme-on-gray-100-strong: hsl(210, 57%, 31%);
+    --theme-error: hsl(359, 100%, 67%);
+    --theme-good: hsl(82, 56%, 50%);
+    --theme-white-05: hsla(0, 0%, 100%, 0.05);
+    --theme-white-10: hsla(0, 0%, 100%, 0.1);
+    --theme-white-20: hsla(0, 0%, 100%, 0.2);
+    --theme-primary-h: 208deg;
+    --theme-primary-s: 62%;
+    --theme-primary-l: 40%;
+    --theme-on-primary-h: 0deg;
+    --theme-on-primary-s: 0%;
+    --theme-on-primary-l: 100%;
+    --theme-primary--30-h: 210deg;
+    --theme-primary--30-s: 57%;
+    --theme-primary--30-l: 31%;
+    --theme-primary--40-h: 210deg;
+    --theme-primary--40-s: 57%;
+    --theme-primary--40-l: 26%;
+    --theme-secondary-h: 82deg;
+    --theme-secondary-s: 57%;
+    --theme-secondary-l: 43%;
+    --theme-on-secondary-h: 0deg;
+    --theme-on-secondary-s: 0%;
+    --theme-on-secondary-l: 100%;
+    --theme-gray-h: 209deg;
+    --theme-gray-s: 31%;
+    --theme-gray-l: 87%
+}

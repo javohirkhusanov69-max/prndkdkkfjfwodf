@@ -1,0 +1,896 @@
+:root {}
+
+.u-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0)
+}
+
+[dir] .u-visually-hidden {
+    padding: 0;
+    margin: -1px;
+    border: 0
+}
+
+@keyframes spinning {
+    0% {
+        transform: rotate(0)
+    }
+    to {
+        transform: rotate(2turn)
+    }
+}
+
+fieldset[disabled] .multiselect {
+    pointer-events: none
+}
+
+.multiselect__spinner {
+    position: absolute;
+    top: 1px;
+    width: 40px;
+    height: 38px;
+    display: block
+}
+
+[dir] .multiselect__spinner {
+    background: #fff
+}
+
+[dir=ltr] .multiselect__spinner,
+[dir="ltr"] .multiselect__spinner,
+[dir='ltr'] .multiselect__spinner {
+    right: 1px
+}
+
+[dir=rtl] .multiselect__spinner,
+[dir="rtl"] .multiselect__spinner,
+[dir='rtl'] .multiselect__spinner {
+    left: 1px
+}
+
+.multiselect__spinner::after,
+.multiselect__spinner::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    width: 16px;
+    height: 16px
+}
+
+[dir] .multiselect__spinner::after,
+[dir] .multiselect__spinner::before {
+    margin: -8px 0 -8px;
+    border-radius: 100%;
+    border-color: #41b883 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0);
+    animation: spinning 2.4s cubic-bezier(0.41, 0.26, 0.2, 0.62);
+    animation-iteration-count: infinite
+}
+
+[dir=ltr] .multiselect__spinner::after,
+[dir="ltr"] .multiselect__spinner::after,
+[dir='ltr'] .multiselect__spinner::after,
+[dir=ltr] .multiselect__spinner::before,
+[dir="ltr"] .multiselect__spinner::before,
+[dir='ltr'] .multiselect__spinner::before {
+    left: 50%
+}
+
+[dir=rtl] .multiselect__spinner::after,
+[dir="rtl"] .multiselect__spinner::after,
+[dir='rtl'] .multiselect__spinner::after,
+[dir=rtl] .multiselect__spinner::before,
+[dir="rtl"] .multiselect__spinner::before,
+[dir='rtl'] .multiselect__spinner::before {
+    right: 50%
+}
+
+[dir] .multiselect__spinner::after {
+    animation: spinning 2.4s cubic-bezier(0.51, 0.09, 0.21, 0.8)
+}
+
+.multiselect__loading-enter-active {
+    opacity: 1
+}
+
+[dir] .multiselect__loading-enter-active {
+    transition: opacity .4s ease-in-out
+}
+
+[dir] .multiselect__loading-leave-active {
+    transition: opacity .4s ease-in-out
+}
+
+.multiselect__loading-enter,
+.multiselect__loading-leave-active {
+    opacity: 0
+}
+
+.multiselect,
+.multiselect__input,
+.multiselect__single {
+    font-family: inherit;
+    font-size: 16px;
+    touch-action: manipulation
+}
+
+.multiselect {
+    box-sizing: content-box;
+    display: block;
+    position: relative;
+    width: 100%;
+    min-height: 40px;
+    color: #35495e
+}
+
+[dir=ltr] .multiselect,
+[dir="ltr"] .multiselect,
+[dir='ltr'] .multiselect {
+    text-align: left
+}
+
+[dir=rtl] .multiselect,
+[dir="rtl"] .multiselect,
+[dir='rtl'] .multiselect {
+    text-align: right
+}
+
+.multiselect * {
+    box-sizing: border-box
+}
+
+.multiselect:focus {
+    outline: 0
+}
+
+.multiselect--disabled {
+    pointer-events: none;
+    opacity: .6
+}
+
+[dir] .multiselect--disabled {
+    background: #ededed
+}
+
+.multiselect--active {
+    z-index: 50
+}
+
+[dir] .multiselect--active:not(.multiselect--above) .multiselect__current,
+[dir] .multiselect--active:not(.multiselect--above) .multiselect__input,
+[dir] .multiselect--active:not(.multiselect--above) .multiselect__tags {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0
+}
+
+[dir=ltr] .multiselect--active .multiselect__select,
+[dir="ltr"] .multiselect--active .multiselect__select,
+[dir='ltr'] .multiselect--active .multiselect__select {
+    transform: rotateZ(180deg)
+}
+
+[dir=rtl] .multiselect--active .multiselect__select,
+[dir="rtl"] .multiselect--active .multiselect__select,
+[dir='rtl'] .multiselect--active .multiselect__select {
+    transform: rotateZ(-180deg)
+}
+
+[dir] .multiselect--above.multiselect--active .multiselect__current,
+[dir] .multiselect--above.multiselect--active .multiselect__input,
+[dir] .multiselect--above.multiselect--active .multiselect__tags {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0
+}
+
+[dir] .multiselect__input {
+    margin-bottom: 8px
+}
+
+[dir=ltr] .multiselect__input,
+[dir="ltr"] .multiselect__input,
+[dir='ltr'] .multiselect__input {
+    padding: 0 0 0 5px
+}
+
+[dir=rtl] .multiselect__input,
+[dir="rtl"] .multiselect__input,
+[dir='rtl'] .multiselect__input {
+    padding: 0 5px 0 0
+}
+
+.multiselect__input,
+.multiselect__single {
+    position: relative;
+    display: inline-block;
+    min-height: 20px;
+    line-height: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    vertical-align: top
+}
+
+[dir] .multiselect__input,
+[dir] .multiselect__single {
+    border: 0;
+    border-radius: 5px;
+    background: #fff;
+    transition: border .1s ease
+}
+
+.multiselect__input::placeholder {
+    color: #35495e
+}
+
+.multiselect__tag~.multiselect__input,
+.multiselect__tag~.multiselect__single {
+    width: auto
+}
+
+[dir] .multiselect__input:hover,
+[dir] .multiselect__single:hover {
+    border-color: #cfcfcf
+}
+
+.multiselect__input:focus,
+.multiselect__single:focus {
+    outline: 0
+}
+
+[dir] .multiselect__input:focus,
+[dir] .multiselect__single:focus {
+    border-color: #a8a8a8
+}
+
+[dir] .multiselect__single {
+    margin-bottom: 8px
+}
+
+[dir=ltr] .multiselect__single,
+[dir="ltr"] .multiselect__single,
+[dir='ltr'] .multiselect__single {
+    padding: 0 0 0 5px
+}
+
+[dir=rtl] .multiselect__single,
+[dir="rtl"] .multiselect__single,
+[dir='rtl'] .multiselect__single {
+    padding: 0 5px 0 0
+}
+
+.multiselect__tags-wrap {
+    display: inline
+}
+
+.multiselect__tags {
+    min-height: 40px;
+    display: block;
+    font-size: 14px
+}
+
+[dir] .multiselect__tags {
+    border-radius: 5px;
+    border: 1px solid #e8e8e8;
+    background: #fff
+}
+
+[dir=ltr] .multiselect__tags,
+[dir="ltr"] .multiselect__tags,
+[dir='ltr'] .multiselect__tags {
+    padding: 8px 40px 0 8px
+}
+
+[dir=rtl] .multiselect__tags,
+[dir="rtl"] .multiselect__tags,
+[dir='rtl'] .multiselect__tags {
+    padding: 8px 8px 0 40px
+}
+
+.multiselect__tag {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis
+}
+
+[dir] .multiselect__tag {
+    border-radius: 5px;
+    background: #41b883;
+    margin-bottom: 5px
+}
+
+[dir=ltr] .multiselect__tag,
+[dir="ltr"] .multiselect__tag,
+[dir='ltr'] .multiselect__tag {
+    padding: 4px 26px 4px 10px;
+    margin-right: 10px
+}
+
+[dir=rtl] .multiselect__tag,
+[dir="rtl"] .multiselect__tag,
+[dir='rtl'] .multiselect__tag {
+    padding: 4px 10px 4px 26px;
+    margin-left: 10px
+}
+
+.multiselect__tag-icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    font-weight: 700;
+    font-style: normal;
+    font-style: initial;
+    width: 22px;
+    line-height: 22px
+}
+
+[dir] .multiselect__tag-icon {
+    cursor: pointer;
+    text-align: center;
+    transition: all .2s ease;
+    border-radius: 5px
+}
+
+[dir=ltr] .multiselect__tag-icon,
+[dir="ltr"] .multiselect__tag-icon,
+[dir='ltr'] .multiselect__tag-icon {
+    margin-left: 7px;
+    right: 0
+}
+
+[dir=rtl] .multiselect__tag-icon,
+[dir="rtl"] .multiselect__tag-icon,
+[dir='rtl'] .multiselect__tag-icon {
+    margin-right: 7px;
+    left: 0
+}
+
+.multiselect__tag-icon::after {
+    content: "×";
+    color: #266d4d;
+    font-size: 14px
+}
+
+.multiselect__tag-icon:focus::after,
+.multiselect__tag-icon:hover::after {
+    color: #fff
+}
+
+.multiselect__current,
+.multiselect__select {
+    line-height: 16px;
+    display: block;
+    box-sizing: border-box;
+    -webkit-text-decoration: none;
+    text-decoration: none
+}
+
+[dir] .multiselect__current,
+[dir] .multiselect__select {
+    margin: 0;
+    cursor: pointer
+}
+
+.multiselect__current {
+    min-height: 40px;
+    overflow: hidden;
+    white-space: nowrap
+}
+
+[dir] .multiselect__current {
+    border-radius: 5px;
+    border: 1px solid #e8e8e8
+}
+
+[dir=ltr] .multiselect__current,
+[dir="ltr"] .multiselect__current,
+[dir='ltr'] .multiselect__current {
+    padding: 8px 30px 0 12px
+}
+
+[dir=rtl] .multiselect__current,
+[dir="rtl"] .multiselect__current,
+[dir='rtl'] .multiselect__current {
+    padding: 8px 12px 0 30px
+}
+
+.multiselect__select {
+    position: absolute;
+    width: 40px;
+    height: 38px;
+    top: 1px
+}
+
+[dir] .multiselect__select {
+    padding: 4px 8px;
+    text-align: center;
+    transition: transform .2s ease
+}
+
+[dir=ltr] .multiselect__select,
+[dir="ltr"] .multiselect__select,
+[dir='ltr'] .multiselect__select {
+    right: 1px
+}
+
+[dir=rtl] .multiselect__select,
+[dir="rtl"] .multiselect__select,
+[dir='rtl'] .multiselect__select {
+    left: 1px
+}
+
+.multiselect__select::before {
+    position: relative;
+    top: 65%;
+    color: #999;
+    content: ""
+}
+
+[dir] .multiselect__select::before {
+    margin-top: 4px;
+    border-style: solid;
+    border-width: 5px 5px 0;
+    border-color: #999 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0)
+}
+
+[dir=ltr] .multiselect__select::before,
+[dir="ltr"] .multiselect__select::before,
+[dir='ltr'] .multiselect__select::before {
+    right: 0
+}
+
+[dir=rtl] .multiselect__select::before,
+[dir="rtl"] .multiselect__select::before,
+[dir='rtl'] .multiselect__select::before {
+    left: 0
+}
+
+.multiselect__placeholder {
+    color: #adadad;
+    display: inline-block
+}
+
+[dir] .multiselect__placeholder {
+    margin-bottom: 10px;
+    padding-top: 2px
+}
+
+.multiselect--active .multiselect__placeholder {
+    display: none
+}
+
+.multiselect__content-wrapper {
+    position: absolute;
+    display: block;
+    width: 100%;
+    max-height: 240px;
+    overflow: auto;
+    z-index: 50;
+    -webkit-overflow-scrolling: touch
+}
+
+[dir] .multiselect__content-wrapper {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px
+}
+
+.multiselect__content {
+    list-style: none;
+    display: inline-block;
+    min-width: 100%;
+    vertical-align: top
+}
+
+[dir] .multiselect__content {
+    padding: 0;
+    margin: 0
+}
+
+.multiselect--above .multiselect__content-wrapper {
+    bottom: 100%
+}
+
+[dir] .multiselect--above .multiselect__content-wrapper {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: none;
+    border-top: 1px solid #e8e8e8
+}
+
+.multiselect__content::-webkit-scrollbar {
+    display: none
+}
+
+.multiselect__element {
+    display: block
+}
+
+.multiselect__option {
+    display: block;
+    min-height: 40px;
+    line-height: 16px;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    text-transform: none;
+    vertical-align: middle;
+    position: relative;
+    white-space: nowrap
+}
+
+[dir] .multiselect__option {
+    padding: 12px;
+    cursor: pointer
+}
+
+.multiselect__option::after {
+    top: 0;
+    position: absolute;
+    line-height: 40px;
+    font-size: 13px
+}
+
+[dir=ltr] .multiselect__option::after,
+[dir="ltr"] .multiselect__option::after,
+[dir='ltr'] .multiselect__option::after {
+    right: 0;
+    padding-right: 12px;
+    padding-left: 20px
+}
+
+[dir=rtl] .multiselect__option::after,
+[dir="rtl"] .multiselect__option::after,
+[dir='rtl'] .multiselect__option::after {
+    left: 0;
+    padding-left: 12px;
+    padding-right: 20px
+}
+
+.multiselect__option--highlight {
+    outline: 0;
+    color: #fff
+}
+
+[dir] .multiselect__option--highlight {
+    background: #41b883
+}
+
+.multiselect__option--highlight::after {
+    content: attr(data-select);
+    color: #fff
+}
+
+[dir] .multiselect__option--highlight::after {
+    background: #41b883
+}
+
+.multiselect__option--selected {
+    color: #35495e;
+    font-weight: 700
+}
+
+[dir] .multiselect__option--selected {
+    background: #f3f3f3
+}
+
+.multiselect__option--selected::after {
+    content: attr(data-selected);
+    color: silver
+}
+
+[dir] .multiselect__option--selected::after {
+    background: inherit
+}
+
+.multiselect__option--selected.multiselect__option--highlight {
+    color: #fff
+}
+
+[dir] .multiselect__option--selected.multiselect__option--highlight {
+    background: #ff6a6a
+}
+
+.multiselect__option--selected.multiselect__option--highlight::after {
+    content: attr(data-deselect);
+    color: #fff
+}
+
+[dir] .multiselect__option--selected.multiselect__option--highlight::after {
+    background: #ff6a6a
+}
+
+.multiselect--disabled .multiselect__current,
+.multiselect--disabled .multiselect__select {
+    color: #a6a6a6
+}
+
+[dir] .multiselect--disabled .multiselect__current,
+[dir] .multiselect--disabled .multiselect__select {
+    background: #ededed
+}
+
+.multiselect__option--disabled {
+    color: #a6a6a6 !important;
+    pointer-events: none
+}
+
+[dir] .multiselect__option--disabled {
+    background: #ededed !important;
+    cursor: text
+}
+
+.multiselect__option--group {
+    color: #35495e
+}
+
+[dir] .multiselect__option--group {
+    background: #ededed
+}
+
+.multiselect__option--group.multiselect__option--highlight {
+    color: #fff
+}
+
+[dir] .multiselect__option--group.multiselect__option--highlight {
+    background: #35495e
+}
+
+[dir] .multiselect__option--group.multiselect__option--highlight::after {
+    background: #35495e
+}
+
+[dir] .multiselect__option--disabled.multiselect__option--highlight {
+    background: #dedede
+}
+
+.multiselect__option--group-selected.multiselect__option--highlight {
+    color: #fff
+}
+
+[dir] .multiselect__option--group-selected.multiselect__option--highlight {
+    background: #ff6a6a
+}
+
+.multiselect__option--group-selected.multiselect__option--highlight::after {
+    content: attr(data-deselect);
+    color: #fff
+}
+
+[dir] .multiselect__option--group-selected.multiselect__option--highlight::after {
+    background: #ff6a6a
+}
+
+[dir] .multiselect-enter-active,
+[dir] .multiselect-leave-active {
+    transition: all .15s ease
+}
+
+.multiselect-enter,
+.multiselect-leave-active {
+    opacity: 0
+}
+
+.multiselect__strong {
+    line-height: 20px;
+    display: inline-block;
+    vertical-align: top
+}
+
+[dir] .multiselect__strong {
+    margin-bottom: 8px
+}
+
+[dir=rtl] .multiselect {
+    text-align: right
+}
+
+[dir=rtl] .multiselect__select {
+    right: auto;
+    left: 1px
+}
+
+[dir=rtl] .multiselect__tags {
+    padding: 8px 8px 0 40px
+}
+
+[dir=rtl] .multiselect__content {
+    text-align: right
+}
+
+[dir=rtl] .multiselect__option::after {
+    right: auto;
+    left: 0
+}
+
+[dir=rtl] .multiselect__clear {
+    right: auto;
+    left: 12px
+}
+
+[dir=rtl] .multiselect__spinner {
+    right: auto;
+    left: 1px
+}
+
+[data-v-3ba1bddc]:root {}
+
+.u-visually-hidden[data-v-3ba1bddc] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0)
+}
+
+[dir] .u-visually-hidden[data-v-3ba1bddc] {
+    padding: 0;
+    margin: -1px;
+    border: 0
+}
+
+.bet-input[data-v-3ba1bddc] {
+    -webkit-appearance: textfield;
+    appearance: textfield
+}
+
+.bet-input[data-v-3ba1bddc]:focus::placeholder {
+    color: rgba(0, 0, 0, 0)
+}
+
+.bet-input[data-v-3ba1bddc]::-webkit-inner-spin-button,
+.bet-input[data-v-3ba1bddc]::-webkit-outer-spin-button {
+    display: none;
+    -webkit-appearance: none;
+    appearance: none
+}
+
+[dir] .bet-input[data-v-3ba1bddc]::-webkit-inner-spin-button,
+[dir] .bet-input[data-v-3ba1bddc]::-webkit-outer-spin-button {
+    margin: 0
+}
+
+[data-v-269da41a]:root {}
+
+.u-visually-hidden[data-v-269da41a] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0)
+}
+
+[dir] .u-visually-hidden[data-v-269da41a] {
+    padding: 0;
+    margin: -1px;
+    border: 0
+}
+
+.game-popup--rules[data-v-269da41a],
+.game-popup--results[data-v-269da41a] {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto
+}
+
+[dir] .game-popup--rules[data-v-269da41a],
+[dir] .game-popup--results[data-v-269da41a] {
+    padding: 1.5em .125em;
+    text-align: center
+}
+
+[dir=ltr] .game-popup--rules[data-v-269da41a],
+[dir="ltr"] .game-popup--rules[data-v-269da41a],
+[dir='ltr'] .game-popup--rules[data-v-269da41a],
+[dir=ltr] .game-popup--results[data-v-269da41a],
+[dir="ltr"] .game-popup--results[data-v-269da41a],
+[dir='ltr'] .game-popup--results[data-v-269da41a] {
+    left: 0
+}
+
+[dir=rtl] .game-popup--rules[data-v-269da41a],
+[dir="rtl"] .game-popup--rules[data-v-269da41a],
+[dir='rtl'] .game-popup--rules[data-v-269da41a],
+[dir=rtl] .game-popup--results[data-v-269da41a],
+[dir="rtl"] .game-popup--results[data-v-269da41a],
+[dir='rtl'] .game-popup--results[data-v-269da41a] {
+    right: 0
+}
+
+.game-popup--rules[data-v-269da41a]::before,
+.game-popup--results[data-v-269da41a]::before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle
+}
+
+[dir] .app-stage--v3 .game-popup--mobile-v3[data-v-269da41a] {
+    margin-top: -48px
+}
+
+.game-popup__content[data-v-269da41a] {
+    display: inline-block;
+    max-width: calc(100% - 1px);
+    vertical-align: middle
+}
+
+[data-v-b698881c]:root {}
+
+.u-visually-hidden[data-v-b698881c] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0)
+}
+
+[dir] .u-visually-hidden[data-v-b698881c] {
+    padding: 0;
+    margin: -1px;
+    border: 0
+}
+
+.game-popup--rules[data-v-b698881c],
+.game-popup--results[data-v-b698881c] {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto
+}
+
+[dir] .game-popup--rules[data-v-b698881c],
+[dir] .game-popup--results[data-v-b698881c] {
+    padding: 1.5em .125em;
+    text-align: center
+}
+
+[dir=ltr] .game-popup--rules[data-v-b698881c],
+[dir="ltr"] .game-popup--rules[data-v-b698881c],
+[dir='ltr'] .game-popup--rules[data-v-b698881c],
+[dir=ltr] .game-popup--results[data-v-b698881c],
+[dir="ltr"] .game-popup--results[data-v-b698881c],
+[dir='ltr'] .game-popup--results[data-v-b698881c] {
+    left: 0
+}
+
+[dir=rtl] .game-popup--rules[data-v-b698881c],
+[dir="rtl"] .game-popup--rules[data-v-b698881c],
+[dir='rtl'] .game-popup--rules[data-v-b698881c],
+[dir=rtl] .game-popup--results[data-v-b698881c],
+[dir="rtl"] .game-popup--results[data-v-b698881c],
+[dir='rtl'] .game-popup--results[data-v-b698881c] {
+    right: 0
+}
+
+.game-popup--rules[data-v-b698881c]::before,
+.game-popup--results[data-v-b698881c]::before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle
+}
+
+[dir] .app-stage--v3 .game-popup--mobile-v3[data-v-b698881c] {
+    margin-top: -48px
+}
+
+.game-popup__content[data-v-b698881c] {
+    display: inline-block;
+    max-width: calc(100% - 1px);
+    vertical-align: middle
+}

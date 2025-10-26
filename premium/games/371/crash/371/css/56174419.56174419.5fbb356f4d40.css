@@ -1,0 +1,21 @@
+[data-v-7ebfaf9e]:root {}
+
+.u-visually-hidden[data-v-7ebfaf9e] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0)
+}
+
+[dir] .u-visually-hidden[data-v-7ebfaf9e] {
+    padding: 0;
+    margin: -1px;
+    border: 0
+}
+
+.svg-shadow-layout[data-v-7ebfaf9e] {
+    height: 0;
+    width: 0;
+    display: none
+}
