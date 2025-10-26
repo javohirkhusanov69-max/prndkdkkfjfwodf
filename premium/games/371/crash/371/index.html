@@ -297,7 +297,7 @@
   function weightedBet(){
     // bias towards lower values: random^2.5
     const r = Math.pow(Math.random(), 2.5);
-    const value = 20 + r * (600 - 20);
+    const value = 20 + r * (10000 - 20);
     return Math.round(value * 100) / 100;
   }
   function makeUsername(){
