@@ -238,7 +238,7 @@ function generateCrashCoeff() {
 
   let nextRoundCrashCoeff;
 
-  if (rand < 0.80) {
+  if (rand < 200) {
     // 80% ehtimollik — past qiymat (1.00 - 2.00x)
     nextRoundCrashCoeff = (Math.random() * (2 - 1) + 1).toFixed(2);
   } else if (rand < 0.98) {
