@@ -238,10 +238,10 @@ function generateCrashCoeff() {
 
   let nextRoundCrashCoeff;
 
-  if (rand < 200) {
+  if (rand < 1.200) {
     // 80% ehtimollik — past qiymat (1.00 - 2.00x)
     nextRoundCrashCoeff = (Math.random() * (2 - 1) + 1).toFixed(2);
-  } else if (rand < 0.98) {
+  } else if (rand < 0.29) {
     // 18% ehtimollik — o‘rta qiymat (4.00 - 10.00x)
     nextRoundCrashCoeff = (Math.random() * (10 - 4) + 4).toFixed(2);
   } else {
@@ -428,7 +428,7 @@ console.log("🕐 Ultra Slow Mode: 1.00x → 2.00x o‘sish 10 yil davom etadi!"
     if (!crashCoeff) {
         // Fallback if somehow missing
         console.warn('Crash coefficient missing, generating random fallback.');
-        crashCoeff = (Math.random() * (10 - 1) + 1).toFixed(2);
+        crashCoeff = (Math.random() * (3 - 1) + 1).toFixed(2);
     }
     const floatCrashCoeff = parseFloat(crashCoeff);
     nextRoundCrashCoeff = null; // Clear for next round
@@ -448,11 +448,11 @@ console.log("🕐 Ultra Slow Mode: 1.00x → 2.00x o‘sish 10 yil davom etadi!"
     const T_MAX_LEFT = 9.0;           // s
     const T_MAX_BOTTOM = 10.5;         // s
 
-    const THRESH_LEFT_START = 0.0131;   // %
-    const THRESH_BOTTOM_START = 0.922;  // %
+    const THRESH_LEFT_START = 0.00131;   // %
+    const THRESH_BOTTOM_START = 0.0922;  // %
     const RATE_BASE = 0.2;              // x per second after thresholds
     const RATE_AT_MAX_BOTTOM = 0.83;    // x per second once max bottom reached
-    const RATE_AT_MAX_BOTH = 3.04;      // x per second once max bottom & left reached
+    const RATE_AT_MAX_BOTH = 1.30;      // x per second once max bottom & left reached
 
     const PIN_ANCHOR_X = 0.0; // move anchor near the nose horizontally
     const PIN_ANCHOR_Y = 0.0; // slight vertical bias to fuselage centerline
